@@ -1,0 +1,2 @@
+Process feminine plural adjectives in -ыя (which is easy) and -ія (which isn't; ask David about strategy)
+Fix tokenization function to capture whitespace after punctuation characters into the same token
