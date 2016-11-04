@@ -58,3 +58,11 @@ def normalize(inputtext):
 def create_token(inputtext):
     return {'t':inputtext, 'n':normalize(inputtext)}
 
+
+def o_after_pal(inputtext):
+    if re.search(r'[чжшщ]о', inputtext, re.IGNORECASE):
+        if re.search(r'[чжшщ]о', inputtext):
+            return re.sub(r'([чжшщ])о',r'\1е', inputtext)
+        else:
+            return re.sub(r'([ЧЖШЩ])О',r'\1Е', inputtext)
+    return inputtext
