@@ -48,15 +48,7 @@ def ei(inputtext):
         else:
             return re.sub('ІЭ', 'ИЕ', inputtext) 
     else:
-        return inputtext    
-        
-
-def normalize(inputtext):
-    return ago(prefixZ(tverdyj(eja(replace_letters(re.sub("\s+$","", ei(inputtext)))))))
-    
-    
-def create_token(inputtext):
-    return {'t':inputtext, 'n':normalize(inputtext)}
+        return inputtext
 
 
 def o_after_pal(inputtext):
@@ -66,3 +58,51 @@ def o_after_pal(inputtext):
         else:
             return re.sub(r'([ЧЖШЩ])О',r'\1Е', inputtext)
     return inputtext
+
+
+def ija(inputtext):
+    if re.search('ыя$', inputtext, re.IGNORECASE):
+        if re.search('ыя$', inputtext):
+            return re.sub('ыя$', 'ые', inputtext)
+        else:
+            return re.sub('ЫЯ', 'ЫЕ', inputtext)
+    elif re.search('ия$', inputtext, re.IGNORECASE):
+        with open('adj-with-ija.txt','r') as f:
+            adjectives = set(word for word in f.read().split('\n'))
+            if inputtext[0:-2].lower() in adjectives:
+                if inputtext[-2, -1] == 'и':
+                    return inputtext[0:-2] + 'ие'
+                else:
+                    return inputtext[0:-2] + 'ИЕ'
+            else:
+                return inputtext
+    else:
+        return inputtext
+
+def ija(inputtext):
+    if re.search('ыя$', inputtext, re.IGNORECASE):
+        if re.search('ыя$', inputtext):
+            return re.sub('ыя$', 'ые', inputtext)
+        else:
+            return re.sub('ЫЯ', 'ЫЕ', inputtext)
+    elif re.search('ия$', inputtext, re.IGNORECASE):
+        with open('adj-with-ija.txt','r') as f:
+            adjectives = set(word for word in f.read().split('\n'))
+            if inputtext[0:-2].lower() in adjectives:
+                if inputtext[-2, -1] == 'и':
+                    return inputtext[0:-2] + 'ие'
+                else:
+                    return inputtext[0:-2] + 'ИЕ'
+            else:
+                return inputtext
+    else:
+        return inputtext
+
+
+def normalize(inputtext):
+    return ija(o_after_pal(ago(prefixZ(tverdyj(eja(replace_letters(re.sub("\s+$", "", ei(inputtext)))))))))
+
+
+def create_token(inputtext):
+    return {'t':inputtext, 'n':normalize(inputtext)}
+
