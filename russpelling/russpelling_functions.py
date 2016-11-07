@@ -70,7 +70,7 @@ def ija(inputtext):
         with open('adj-with-ija.txt','r') as f:
             adjectives = set(word for word in f.read().split('\n'))
             if inputtext[0:-2].lower() in adjectives:
-                if inputtext[-2, -1] == 'и':
+                if inputtext[-2:-1] == 'и':
                     return inputtext[0:-2] + 'ие'
                 else:
                     return inputtext[0:-2] + 'ИЕ'
