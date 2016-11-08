@@ -9,7 +9,7 @@
 ## To install
 
 * Clone with `git clone https://github.com/ingoboerner/russpelling.git`
-* Change into main project directory
+* Change into **russpelling** subdirectory of main project directory
 * Run `python setup.py install`
 
 ## To use
