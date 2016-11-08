@@ -10,7 +10,7 @@
 
 * Clone with `git clone https://github.com/ingoboerner/russpelling.git`
 * Change into main project directory
-* Run `python setup.py`
+* Run `python setup.py install`
 
 ## To use
 
